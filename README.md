@@ -2,49 +2,59 @@
 
     File        : README.md
     Maintainer  : Felix C. Stegerman <flx@obfusk.net>
-    Date        : 2013-05-06
+    Date        : 2014-07-01
 
     Copyright   : Copyright (C) 2013  Felix C. Stegerman
-    Version     : 0.4.0
+    Version     : 0.4.1
 
 []: }}}1
 
 ## Description
 []: {{{1
 
-  mailer - sendemail + gmail
+  mailer - send(e)mail script
 
-  mailer uses sendemail to send mail using a (g)mail account -- it is
-  quite useful for cron jobs.
+  mailer uses either sendemail to send mail using smtp credentials
+  (e.g. a gmail or ses account) or sendmail to send mail using the
+  local mail server (e.g. nullmailer).  It is quite useful for cron
+  jobs that need to send mail to specific people (e.g. your devops
+  team).
 
 []: }}}1
 
 ## Usage
 []: {{{1
 
-    $ aptitude install sendemail libio-socket-ssl-perl \
-      libnet-ssleay-perl
+```bash
+$ mkdir -p /opt/src
+$ git clone https://github.com/obfusk/mailer.git /opt/src/mailer
 
-    $ mkdir -p /opt/src
-    $ git clone https://github.com/noxqsgit/mailer.git \
-      /opt/src/mailer
-    $ chmod 700 /opt/src/mailer/mailer.bash
-    $ vim /opt/src/mailer/mailer.bash
+# for sendemail
+$ aptitude install sendemail libio-socket-ssl-perl \
+  libnet-ssleay-perl
+$ cp -i /opt/src/mailer/mailer{-sendemail,}.bash
+$ chmod 700 /opt/src/mailer/mailer.bash
+$ vim /opt/src/mailer/mailer.bash
+
+# for sendmail
+$ cp -i /opt/src/mailer/mailer{-sendmail,}.bash
+$ vim /opt/src/mailer/mailer.bash
+```
 
 []: }}}1
 
 ## License
 []: {{{1
 
-  GPLv2 [1].
+  GPLv3+ [1].
 
 []: }}}1
 
 ## References
 []: {{{1
 
-  [1] GNU General Public License, version 2
-  --- http://www.opensource.org/licenses/GPL-2.0
+  [1] GNU General Public License, version 3
+  --- http://www.gnu.org/licenses/gpl-3.0.html
 
 []: }}}1
 
